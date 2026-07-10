@@ -38,7 +38,7 @@ SELECT
     jobTitle,
     CASE
         WHEN jobTitle = 'President' 
-          OR jobTitle = 'VP Sales'
+        OR jobTitle = 'VP Sales'
         THEN 'Executive'
         ELSE 'Not Executive'
     END AS role
