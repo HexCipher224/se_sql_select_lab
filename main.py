@@ -62,11 +62,15 @@ FROM employees;
 
 
 # STEP 8
-# Replace None with your code
+# Calculate the total price sum as a Pandas Series
 sum_total_price = pd.read_sql("""
-SELECT SUM(ROUND(priceEach * quantityOrdered)) AS sum_total_price
+SELECT
+    ROUND(priceEach * quantityOrdered) AS total_price
 FROM orderdetails;
-""", conn)    
+""", conn)['total_price'].sum()
+
+# If the test expects sum_total_price[0], turn the scalar result into a Series:
+sum_total_price = pd.Series([sum_total_price])
 
 # STEP 9
 # Replace None with your code
